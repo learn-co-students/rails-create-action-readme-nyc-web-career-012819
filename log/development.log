@@ -40,3 +40,85 @@ Processing by PostsController#show as HTML
   [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", 1]]
   Rendered posts/show.html.erb within layouts/application (0.4ms)
 Completed 200 OK in 27ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "Title Goes Here"], ["description", "Desc goes here..."], ["created_at", "2019-02-22 19:25:31.241408"], ["updated_at", "2019-02-22 19:25:31.241408"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" DESC LIMIT 1
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+
+
+Started GET "/" for ::1 at 2019-02-22 14:32:09 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/railties-4.2.11/lib/rails/templates/rails/welcome/index.html.erb (2.9ms)
+Completed 200 OK in 29ms (Views: 19.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for ::1 at 2019-02-22 14:32:19 -0500
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 537ms (Views: 534.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/new" for ::1 at 2019-02-22 14:32:30 -0500
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2019-02-22 14:32:38 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7jDLU3kqYivU/zewa0sw04/gCeDewqO3pjr+OmWhc9GfjrTP9K/mAZsel3zqG++id5b72VRmu/M9qNinLZQTzQ==", "title"=>"hello", "description"=>"World", "commit"=>"Submit Post"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "hello"], ["description", "World"], ["created_at", "2019-02-22 19:32:38.569373"], ["updated_at", "2019-02-22 19:32:38.569373"]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 3.2ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+  app/controllers/posts_controller.rb:20:in `create'
+
+
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (93.5ms)
+
+
+Started POST "/posts" for ::1 at 2019-02-22 14:33:02 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7jDLU3kqYivU/zewa0sw04/gCeDewqO3pjr+OmWhc9GfjrTP9K/mAZsel3zqG++id5b72VRmu/M9qNinLZQTzQ==", "title"=>"hello", "description"=>"World", "commit"=>"Submit Post"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "hello"], ["description", "World"], ["created_at", "2019-02-22 19:33:02.538925"], ["updated_at", "2019-02-22 19:33:02.538925"]]
+  [1m[35m (2.5ms)[0m  commit transaction
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 3.5ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"posts", :id=>nil} missing required keys: [:id]):
+  app/controllers/posts_controller.rb:20:in `create'
+
+
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (72.5ms)
+
+
+Started POST "/posts" for ::1 at 2019-02-22 14:33:49 -0500
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7jDLU3kqYivU/zewa0sw04/gCeDewqO3pjr+OmWhc9GfjrTP9K/mAZsel3zqG++id5b72VRmu/M9qNinLZQTzQ==", "title"=>"hello", "description"=>"World", "commit"=>"Submit Post"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "hello"], ["description", "World"], ["created_at", "2019-02-22 19:33:49.182259"], ["updated_at", "2019-02-22 19:33:49.182259"]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 3.8ms)
+
+NoMethodError (undefined method `to' for #<PostsController:0x007fcab1f5bd50>
+Did you mean?  to_s
+               to_a
+               t):
+  app/controllers/posts_controller.rb:20:in `create'
+
+
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.2ms)
+  Rendered /Users/dolma147/.rvm/gems/ruby-2.3.3/gems/actionpack-4.2.11/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.3ms)
